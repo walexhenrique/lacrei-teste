@@ -14,14 +14,14 @@ Essas instruções permitirão que você obtenha uma cópia do projeto em opera�
     <li>Versão do django rest framework: 3.14.0</li>
 </ul>
 
-#### 1 - Passo: clone
+#### 1 - Passo: Clone
 Realize um clone do projeto em seu computador
 
 ```
 git clone https://github.com/walexhenrique/lacrei-teste.git
 ```
 
-#### 2 - Passo: ambiente virtual
+#### 2 - Passo: Ambiente virtual
 Crie um ambiente virtual na pasta <b>raiz</b> do projeto. No seu terminal use:
 
 Comando para a criação do ambiente virtual no Windows:
@@ -34,7 +34,7 @@ Comando para a criação do ambiente virtual no Linux:
 python3 -m venv venv
 ```
 
-#### 3 - Passo: ativação do ambiente virtual
+#### 3 - Passo: Ativação do ambiente virtual
 Agora você precisa ativar o ambiente virtual para a posterior instalação das dependências do projeto.
 
 Na pasta raiz do projeto, onde você criou o seu ambiente virtual anteriormente. Use:
