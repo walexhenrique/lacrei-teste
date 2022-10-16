@@ -42,3 +42,13 @@ class TarefaDetalhe(APIView):
         tarefa = get_object_or_404(Tarefa, pk=pk)
         serializer = TarefaSerializer(tarefa)
         return Response(serializer.data, status=200)
+    
+    def patch(self, request, pk):
+        tarefa = get_object_or_404(Tarefa, pk=pk)
+        serializer = TarefaSerializer(tarefa, data=request.data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=200)
+
+        return Response(serializer.errors, status=400)
