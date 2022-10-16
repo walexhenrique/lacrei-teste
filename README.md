@@ -207,6 +207,13 @@ No teste não foi pedido que o código fosse criado em inglês, então optei por
         "finalizado": true
     }
     ```
+    Possível erro:
+    * Não encontrar a tarefa com o determinado id. Retornará o status response: 404
+    ```json
+    {
+	    "detail": "Não encontrado."
+    }  
+    ```
 * ##### Atualizar uma tarefa
     ```
     PATCH /api/v1/tarefas/<id>/
@@ -231,6 +238,13 @@ No teste não foi pedido que o código fosse criado em inglês, então optei por
         "finalizado": true
     }
     ```
+    Possível erro:
+    * Não encontrar a tarefa com o determinado id. Retornará o status response: 404
+    ```json
+    {
+	    "detail": "Não encontrado."
+    }  
+    ```
 * ##### Apagar uma tarefa
     ```
     DELETE /api/v1/tarefas/<id>/
@@ -240,6 +254,13 @@ No teste não foi pedido que o código fosse criado em inglês, então optei por
     ```json
     Response: 204
     NO CONTENT
+    ```
+    Possível erro:
+    * Não encontrar a tarefa com o determinado id. Retornará o status response: 404
+    ```json
+    {
+	    "detail": "Não encontrado."
+    }  
     ```
 
 ## 🛠️ Construído com
