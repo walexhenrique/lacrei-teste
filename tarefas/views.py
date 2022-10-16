@@ -1,10 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import Tarefa
 from .serializers import TarefaSerializer
 
+"""
+GET /tarefas/ = Lista todas as tarefas
+POST /tarefas/ = Adiciona uma nova tarefa
+
+GET /tarefas/<id>/ = Detalha uma tarefa
+PATCH /tarefas/<id>/ = Atualiza uma tarefa
+DELETE /tarefas/<id>/ = Apaga uma tarefa
+"""
 
 class TarefaLista(APIView):
     """
@@ -27,3 +35,10 @@ class TarefaLista(APIView):
             return Response(serializer.data, status=201)
         
         return Response(serializer.errors, status=400)
+
+
+class TarefaDetalhe(APIView):
+    def get(self, request, pk):
+        tarefa = get_object_or_404(Tarefa, pk=pk)
+        serializer = TarefaSerializer(tarefa)
+        return Response(serializer.data, status=200)
