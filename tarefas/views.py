@@ -5,14 +5,6 @@ from rest_framework.views import APIView
 from .models import Tarefa
 from .serializers import TarefaSerializer
 
-"""
-GET /tarefas/ = Lista todas as tarefas
-POST /tarefas/ = Adiciona uma nova tarefa
-
-GET /tarefas/<id>/ = Detalha uma tarefa
-PATCH /tarefas/<id>/ = Atualiza uma tarefa
-DELETE /tarefas/<id>/ = Apaga uma tarefa
-"""
 
 class TarefaLista(APIView):
     """
@@ -38,6 +30,15 @@ class TarefaLista(APIView):
 
 
 class TarefaDetalhe(APIView):
+    """
+    Classe responsável por detalhar uma tarefa, 
+    
+    Métodos disponíveis:
+    
+    GET /tarefas/<id>/ = Detalha a tarefa
+    PATCH /tarefas/<id>/ = Atualiza a tarefa
+    DELETE /tarefas/<id>/ = Apaga a tarefa
+    """
     def get(self, request, pk):
         tarefa = get_object_or_404(Tarefa, pk=pk)
         serializer = TarefaSerializer(tarefa)
@@ -46,9 +47,15 @@ class TarefaDetalhe(APIView):
     def patch(self, request, pk):
         tarefa = get_object_or_404(Tarefa, pk=pk)
         serializer = TarefaSerializer(tarefa, data=request.data, partial=True)
-        
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=200)
 
         return Response(serializer.errors, status=400)
+    
+    def delete(self, request, pk):
+        tarefa = get_object_or_404(Tarefa, pk=pk)
+        tarefa.delete()
+        return Response(status=204)
+    

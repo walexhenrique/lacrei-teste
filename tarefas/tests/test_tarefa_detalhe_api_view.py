@@ -64,7 +64,7 @@ class TestModificarTarefa(APITestCase):
         self.assertEqual(response.status_code, 404)
     
     def test_tarefa_funciona_modificar_com_sucesso(self):
-         # Criando uma tarefa
+        # Criando uma tarefa
 
         Tarefa.objects.create(
             titulo='Tarefa 1',
@@ -85,3 +85,35 @@ class TestModificarTarefa(APITestCase):
         tarefa = Tarefa.objects.get()
         self.assertEqual(request_data['titulo'], tarefa.titulo)
 
+
+class TestApagarTarefa(APITestCase):
+    """
+    Classe responsável pelos testes do metodo DELETE de exclução de tarefa
+    """
+    
+    def setUp(self) -> None:
+        self.url = reverse('detalhes', kwargs={'pk': 1})
+        return super().setUp()
+    
+    def test_tarefa_a_ser_apagada_nao_existe_retorna_status_404(self):
+        response = self.client.patch(self.url)
+
+        self.assertEqual(response.status_code, 404)
+    
+    def test_tarefa_apagada_com_sucesso_retorna_status_204(self):
+        # Criando uma tarefa
+
+        Tarefa.objects.create(
+            titulo='Tarefa 1',
+            descricao = 'Descricao tarefa 1',
+            finalizado = True
+        )
+
+        response = self.client.delete(self.url)
+
+        # Verifica se tudo ocorreu bem
+        self.assertEqual(response.status_code, 204)
+
+        # Verifica se fez a atualização da tarefa
+        tarefa = Tarefa.objects.filter()
+        self.assertEqual(len(tarefa), 0)
