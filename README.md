@@ -128,7 +128,7 @@ No teste não foi pedido que o código fosse criado em inglês, então optei por
 
 ## Documentação da API
 
-* ##### Listagem de todas as tarefas cadastradas anteriormente
+* #### Listagem de todas as tarefas cadastradas anteriormente
     ```
     GET /api/v1/tarefas/
     ```
@@ -189,8 +189,8 @@ No teste não foi pedido que o código fosse criado em inglês, então optei por
     Possíveis erros que podem ocorrer:
     * titulo ou descricao não serem enviados ao criar uma nova tarefa. Retornará o status response: 400
 
-#### Funcionalidades extras adicionadas:
-* ##### Pegar detalhes de apenas uma tarefa
+### Funcionalidades extras adicionadas:
+* #### Pegar detalhes de apenas uma tarefa
     ```
     GET /api/v1/tarefas/<id>/
     ```
@@ -214,7 +214,7 @@ No teste não foi pedido que o código fosse criado em inglês, então optei por
 	    "detail": "Não encontrado."
     }  
     ```
-* ##### Atualizar uma tarefa
+* #### Atualizar uma tarefa
     ```
     PATCH /api/v1/tarefas/<id>/
     ```
@@ -245,7 +245,7 @@ No teste não foi pedido que o código fosse criado em inglês, então optei por
 	    "detail": "Não encontrado."
     }  
     ```
-* ##### Apagar uma tarefa
+* #### Apagar uma tarefa
     ```
     DELETE /api/v1/tarefas/<id>/
     ```
